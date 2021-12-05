@@ -8,14 +8,27 @@ import static com.challenge.aoc2021.day1.DepthScanner.createDepthScanner;
 
 public class Day1 {
     private static final Logger logger = LogManager.getLogger();
+    private static final String INPUT_FILE = "input.txt";
 
     public static void main(String[] args) throws DepthScannerCreationException {
-        var result = runDay1();
-        logger.info("Result day1: {}", result);
+        runPart1();
+        runPart2();
     }
 
-    public static int runDay1() throws DepthScannerCreationException {
-        var depthScanner = createDepthScanner("input.txt");
-        return depthScanner.getNumIncreases();
+    public static int runPart1() throws DepthScannerCreationException {
+
+        var depthScanner = createDepthScanner(INPUT_FILE);
+        final var result = depthScanner.getNumIncreases();
+        logger.info("Result day1: {}", result);
+        
+        return result;
+    }
+
+    public static int runPart2() throws DepthScannerCreationException {
+        var depthScanner = createDepthScanner(INPUT_FILE);
+        final var result = depthScanner.getNumWindowIncreases();
+        logger.info("Result day2: {}", result);
+
+        return result;
     }
 }

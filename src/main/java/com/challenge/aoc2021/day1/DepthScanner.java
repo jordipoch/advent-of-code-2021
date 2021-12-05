@@ -13,6 +13,7 @@ import java.util.List;
 public class DepthScanner {
     private static final Logger logger = LogManager.getLogger();
     private static final Path BASE_PATH = Paths.get("src","main", "resources", "com", "challenge", "day1");
+    private static final int WINDOW_SIZE = 3;
     private final int[] depthMeasurements;
 
     public static DepthScanner createDepthScanner(int[] depthMeasurements) {
@@ -56,6 +57,26 @@ public class DepthScanner {
         for (int i = 1; i < depthMeasurements.length; i++) {
             if (depthMeasurements[i] > depthMeasurements[i-1]) {
                 numIncreases++;
+            }
+        }
+
+        return logger.traceExit(numIncreases);
+    }
+
+    public int getNumWindowIncreases() {
+        logger.traceEntry();
+
+        if (depthMeasurements.length < WINDOW_SIZE + 1) {
+            return 0;
+        }
+
+        int numIncreases = 0;
+        for (int i = WINDOW_SIZE; i < depthMeasurements.length; i++) {
+            // Current and previous window have the same measurements except for the first and last ones
+            // So, it's enough comparing the last measurement from the current window to the first measurement from the last one
+            if (depthMeasurements[i] > depthMeasurements[i-WINDOW_SIZE]) {
+                numIncreases++;
+                logger.debug("{} > {}", depthMeasurements[i], depthMeasurements[i-WINDOW_SIZE]);
             }
         }
 

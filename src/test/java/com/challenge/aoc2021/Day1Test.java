@@ -9,7 +9,12 @@ import static org.testng.Assert.*;
 public class Day1Test {
 
     @Test
-    public void testRunDay1() throws DepthScannerCreationException {
-        assertEquals(Day1.runDay1(), 1832);
+    public void testRunPart1() throws DepthScannerCreationException {
+        assertEquals(Day1.runPart1(), 1832);
+    }
+
+    @Test
+    public void testRunPart2() throws DepthScannerCreationException {
+        assertEquals(Day1.runPart2(), 1858);
     }
 }
