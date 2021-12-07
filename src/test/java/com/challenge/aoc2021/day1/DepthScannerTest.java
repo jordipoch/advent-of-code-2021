@@ -1,4 +1,4 @@
-package com.challenge.aoc2021;
+package com.challenge.aoc2021.day1;
 
 import com.challenge.aoc2021.day1.DepthScanner;
 import com.challenge.aoc2021.day1.exception.DepthScannerCreationException;

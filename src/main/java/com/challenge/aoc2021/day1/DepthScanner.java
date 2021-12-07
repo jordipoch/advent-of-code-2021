@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DepthScanner {
     private static final Logger logger = LogManager.getLogger();
-    private static final Path BASE_PATH = Paths.get("src","main", "resources", "com", "challenge", "day1");
+    private static final Path BASE_PATH = Paths.get("src","main", "resources", "com", "challenge", "aoc2021", "day1");
     private static final int WINDOW_SIZE = 3;
     private final int[] depthMeasurements;
 

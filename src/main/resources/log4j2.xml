@@ -16,5 +16,6 @@
             <AppenderRef ref="File"/>
         </Root>
         <Logger name="com.challenge.aoc2021.day1" level="info" />
+        <Logger name="com.challenge.aoc2021.day2" level="trace" />
     </Loggers>
 </Configuration>
