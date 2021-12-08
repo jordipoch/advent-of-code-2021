@@ -11,4 +11,9 @@ public class Day2Test {
     public void testRunPart1() throws SubmarineControllerException {
         assertEquals(Day2.runPart1(), 1693300);
     }
+
+    @Test
+    public void testRunPart2() throws SubmarineControllerException {
+        assertEquals(Day2.runPart2(), 1857958050);
+    }
 }

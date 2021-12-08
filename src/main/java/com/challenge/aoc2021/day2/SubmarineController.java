@@ -11,10 +11,11 @@ public class SubmarineController {
     private static final Logger logger = LogManager.getLogger();
 
 
-    private SubmarineState submarineState = SubmarineState.createInitialState();
-    List<Move> instructions;
+    private SubmarineState submarineState;
+    private final List<Move> instructions;
 
-    private SubmarineController(List<Move> instructions) {
+    private SubmarineController(List<Move> instructions, SubmarineState submarineState) {
+        this.submarineState = submarineState;
         this.instructions = instructions;
     }
 
@@ -35,6 +36,7 @@ public class SubmarineController {
     public static class Builder {
         private InstructionsFileReader instructionsFileReader = null;
         private final String instructionsFile;
+        private SubmarineState submarineState;
 
         public static Builder createSubmarineController(String instructionsFile) {
             return new Builder(instructionsFile);
@@ -49,14 +51,23 @@ public class SubmarineController {
             return this;
         }
 
+        public Builder withFullState() {
+            this.submarineState = SubmarineStateFactory.getInstance().createSubmarineFullState();
+            return this;
+        }
+
         public SubmarineController build() throws SubmarineControllerException {
             if (instructionsFileReader == null) {
                 instructionsFileReader = new InstructionsFileReader();
             }
 
+            if (submarineState == null) {
+                this.submarineState = SubmarineStateFactory.getInstance().createSubmarineSimpleState();
+            }
+
             var instructions = readInstructions();
 
-            return new SubmarineController(instructions);
+            return new SubmarineController(instructions, submarineState);
         }
 
         private List<Move> readInstructions() throws SubmarineControllerException {
