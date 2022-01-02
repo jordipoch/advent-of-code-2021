@@ -22,18 +22,11 @@ public class DiagnosticReportReaderTest {
         var reader = DiagnosticReportReader.createDiagnosticReportReader(BASE_PATH);
         var diagnosticReport = reader.read("ReaderTest.txt");
 
-        List<BitSet> expected = buildExpected(
+        var expected = DiagnosticReportTestBuilder.of(
                 "1011",
                 "0110",
                 "1101");
 
         Assertions.assertThat(diagnosticReport).as("Checking diagnostic report read...").isEqualTo(expected);
-    }
-
-    private List<BitSet> buildExpected(String... lines) {
-        var bitSetList = new ArrayList<BitSet>();
-        for (var line : lines)
-            bitSetList.add(BitSet.valueOf(new long[] {parseLong(StringUtils.reverse(line), 2)}));
-        return bitSetList;
     }
 }

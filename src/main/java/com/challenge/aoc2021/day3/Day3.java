@@ -11,6 +11,7 @@ public class Day3 {
 
     public static void main(String[] args) throws DiagnosticReportAnalyzerException {
         runPart1();
+        runPart2();
     }
 
     public static int runPart1() throws DiagnosticReportAnalyzerException {
@@ -19,6 +20,15 @@ public class Day3 {
 
         logger.info("Result of Day 3, part 1: {}", result);
 
-        return 0;
+        return result;
+    }
+
+    public static int runPart2() throws DiagnosticReportAnalyzerException {
+        var diagnosticReportAnalyzer = createDiagnosticReportAnalyzer().build();
+        var result = diagnosticReportAnalyzer.calculateLifeSupportRating("input.txt");
+
+        logger.info("Result of Day 3, part 2: {}", result);
+
+        return result;
     }
 }

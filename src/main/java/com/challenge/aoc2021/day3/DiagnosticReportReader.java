@@ -6,7 +6,6 @@ import com.challenge.library.files.TextFileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 

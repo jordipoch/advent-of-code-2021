@@ -9,6 +9,8 @@ public class Day3Test {
 
     @Test
     public void testRunPart1() throws DiagnosticReportAnalyzerException {
-        assertEquals(Day3.runPart1(), 198);
+        assertEquals(Day3.runPart1(), 3309596);
+        assertEquals(Day3.runPart2(), 2981085);
+
     }
 }

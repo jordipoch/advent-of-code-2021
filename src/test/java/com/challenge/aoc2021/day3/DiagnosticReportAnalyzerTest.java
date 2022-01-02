@@ -9,10 +9,18 @@ import static org.testng.Assert.*;
 public class DiagnosticReportAnalyzerTest {
 
     @Test
-    public void testCalculatePowerConsumptionFromFile() throws DiagnosticReportAnalyzerException {
+    public void testCalculatePowerConsumption() throws DiagnosticReportAnalyzerException {
         var analyzer = createDiagnosticReportAnalyzer(DiagnosticReportReaderTest.BASE_PATH).build();
         var powerConsumption = analyzer.calculatePowerConsumption("DiagnosticReportTest.txt");
 
         assertEquals(powerConsumption, 198);
+    }
+
+    @Test
+    public void testCalculateLifeSupportRating() throws DiagnosticReportAnalyzerException {
+        var analyzer = createDiagnosticReportAnalyzer(DiagnosticReportReaderTest.BASE_PATH).build();
+        var ogr = analyzer.calculateLifeSupportRating("DiagnosticReportTest.txt");
+
+        assertEquals(ogr, 230);
     }
 }
