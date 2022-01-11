@@ -3,7 +3,6 @@ package com.challenge.aoc2021.day3;
 import com.challenge.aoc2021.day3.exception.DiagnosticReportAnalyzerException;
 import com.challenge.aoc2021.day3.exception.DiagnosticReportReaderException;
 import com.challenge.aoc2021.day3.exception.LifeSupportCalculatorException;
-import com.challenge.library.util.BitSetUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

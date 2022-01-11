@@ -17,6 +17,7 @@
         </Root>
         <Logger name="com.challenge.aoc2021.day1" level="info" />
         <Logger name="com.challenge.aoc2021.day2" level="info" />
-        <Logger name="com.challenge.aoc2021.day3" level="debug" />
+        <Logger name="com.challenge.aoc2021.day3" level="info" />
+        <Logger name="com.challenge.aoc2021.day4" level="trace" />
     </Loggers>
 </Configuration>

@@ -39,7 +39,7 @@ public class DiagnosticReport implements Iterable<BitSet> {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<BitSet> iterator() {
         return lineBits.iterator();
     }
 
