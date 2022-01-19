@@ -1,6 +1,5 @@
 package com.challenge.aoc2021.day4;
 
-import com.challenge.aoc2021.day4.BingoSubsystem.Components;
 import com.challenge.aoc2021.day4.exception.BingoBoardException;
 import com.challenge.aoc2021.day4.exception.BingoSubsystemReaderException;
 import com.challenge.library.files.TextFileReader;
@@ -18,33 +17,32 @@ import java.util.stream.Collectors;
 
 import static com.challenge.aoc2021.day4.BingoBoard.Builder.createBingoBoard;
 
-public class BingoSubsystemReader {
+public class BingoReader {
 
     private static final Path DEFAULT_BASE_PATH = Paths.get("src", "main");
     private static final Path DEFAULT_BASE_TEST_PATH = Paths.get("src", "test");
     private static final Path PATH = Paths.get("resources", "com", "challenge", "aoc2021", "day4");
     private final Path basePath;
 
-    private BingoSubsystemReader(Path basePath) {
+    private BingoReader(Path basePath) {
         this.basePath = basePath.resolve(PATH);
     }
 
-    public static BingoSubsystemReader create() {
-        return new BingoSubsystemReader(DEFAULT_BASE_PATH);
+    public static BingoReader create() {
+        return new BingoReader(DEFAULT_BASE_PATH);
     }
 
-    public static BingoSubsystemReader createForTest() {
-        return new BingoSubsystemReader(DEFAULT_BASE_TEST_PATH);
+    public static BingoReader createForTest() {
+        return new BingoReader(DEFAULT_BASE_TEST_PATH);
     }
 
-    public Components read(String file) throws BingoSubsystemReaderException {
+    public Bingo read(String file) throws BingoSubsystemReaderException {
         var lines = readLines(file);
 
-        var components = new Components();
-        components.setNumbersToDraw(readNumbersToDraw(lines.get(0)));
-        components.setBoards(readBoards(lines));
-
-        return components;
+        return Bingo.Builder.createBingo()
+                .withNumbersToDraw(readNumbersToDraw(lines.get(0)))
+                .withBoardsToPlay(readBoards(lines))
+                .build();
     }
 
     private List<String> readLines(String file) throws BingoSubsystemReaderException {
